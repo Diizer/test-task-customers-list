@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
-
+import { Customer } from 'src/app/domain/models/customers';
 import { CustomerDetailsComponent } from './customer-details-modal.component';
-
-export interface ICustomerDetails {
-    data: object;
-}
 
 @Injectable()
 export class CustomerDetailsModalService {
@@ -21,7 +17,7 @@ export class CustomerDetailsModalService {
     constructor(public dialog: MatDialog) {
     }
 
-    openDialog(data: ICustomerDetails): void {
+    openDialog(data: Customer): void {
         const dialogRef = this.dialog.open(CustomerDetailsComponent, {
             width: '400px',
             data: data

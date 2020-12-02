@@ -61,3 +61,12 @@ input[type="number"]::-webkit-inner-spin-button {
 ::ng-deep.mat-slider-thumb {
     background-color: #ff4081 !important;
 }
+
+@media screen and (max-width: 765px) {
+	.slider, .slider__row {
+		display: block;
+		mat-form-field:first-child {
+			margin-left: -50px;
+		}
+	}
+}

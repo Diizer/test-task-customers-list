@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ICustomerDetails } from './customer-details-modal.service';
+import { Customer } from 'src/app/domain/models/customers';
 
 @Component({
     selector: 'app-customer-details-modal',
@@ -10,9 +10,9 @@ import { ICustomerDetails } from './customer-details-modal.service';
 })
 export class CustomerDetailsComponent implements OnInit {
     public title: string = 'Customer Details';
-    public customerDetails: any;
+    public customerDetails: Customer;
     public imgUrl: string = '';
-    constructor(public dialogRef: MatDialogRef<CustomerDetailsComponent>, @Inject(MAT_DIALOG_DATA) public data: ICustomerDetails) {
+    constructor(public dialogRef: MatDialogRef<CustomerDetailsComponent>, @Inject(MAT_DIALOG_DATA) public data: Customer) {
         this.customerDetails = data;
         this.imgUrl = null;
         this.imgUrl = this.customerDetails && this.customerDetails.imgUrl ? this.customerDetails.imgUrl : 'https://semantic-ui.com/images/wireframe/image.png';

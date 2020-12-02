@@ -3,7 +3,8 @@ import { CustomersDataSource } from './customers.data-source';
 import { CustomerService } from '../../services/customer.service';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { Subject, interval, Observable, BehaviorSubject, never } from 'rxjs';
-import { CustomerDetailsModalService, ICustomerDetails } from './customer-details-modal/customer-details-modal.service';
+import { CustomerDetailsModalService } from './customer-details-modal/customer-details-modal.service';
+import { Customer } from 'src/app/domain/models/customers';
 
 @Component({
   selector: 'app-customers-page',
@@ -46,7 +47,7 @@ export class CustomersComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  async onCustomer(c: ICustomerDetails): Promise<void> {
+  async onCustomer(c: Customer): Promise<void> {
     this.csModalService.openDialog(c);
     this.pauser.next(true);
   }
