@@ -1,0 +1,23 @@
+<button class="close" mat-button (click)="onNoClick()">&#10006;</button>
+<h3 mat-dialog-title class="title">{{title}}</h3>
+<div mat-dialog-content>
+    <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile>
+            <img mat-card-image src="{{imgUrl}}" id="cusImage" alt="Oops">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-card-header>
+                <mat-card-title>Name</mat-card-title>
+                <mat-card-subtitle>{{customerDetails.name}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-header>
+                <mat-card-title>Last Name</mat-card-title>
+                <mat-card-subtitle>{{customerDetails.lastName}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-header>
+                <mat-card-title>Age</mat-card-title>
+                <mat-card-subtitle>{{customerDetails.age}}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

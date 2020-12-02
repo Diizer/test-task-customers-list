@@ -1,0 +1,25 @@
+.mat-grid-tile .mat-figure {
+    display: block !important;
+}
+.mat-card-image {
+    width: 100%;
+    max-width: 130px !important;
+    border-radius: 50% !important;
+    margin: 0 !important;
+    height: 130px;
+}
+
+.close.mat-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 13px;
+    font-size: 17px;
+    color: darkgrey;
+    line-height: 14px;
+    min-width: auto;
+}
+
+.mat-dialog-container {
+    position: relative !important;
+}

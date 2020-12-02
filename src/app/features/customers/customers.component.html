@@ -1,0 +1,64 @@
+<mat-card>
+	<mat-card>
+		<mat-card-content>
+			<div class="slider">
+				<h2 class="slider__label">Rows To Display</h2>
+				<div class="slider__row" >
+					<mat-form-field class="slider__field">
+						<input matInput type="number" value="1" [disabled]='true'>
+					</mat-form-field>
+
+					<mat-slider (ngModelChange)="onSliderChange($event)" [max]="rowsToDisplayMax" [min]="1" [step]="1" [thumbLabel]="true"
+						[(ngModel)]="rowsToDisplay">
+					</mat-slider>
+
+					<mat-form-field class="slider__field">
+						<input matInput type="number" [(ngModel)]="rowsToDisplayMax" [disabled]='true'>
+					</mat-form-field>
+				</div>
+			</div>
+		</mat-card-content>
+	</mat-card>
+
+	<div class="table-container">
+		<div *ngIf="dataSource">
+
+			<mat-table [dataSource]="dataSource" class="mat-elevation-z8 mat-table-striped">
+				<ng-container matColumnDef="Name">
+					<mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+					<mat-cell *matCellDef="let dataItem">
+						{{dataItem.name}}
+					</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="LastName">
+					<mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+					<mat-cell *matCellDef="let dataItem">
+						{{dataItem.lastName}}
+					</mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Age">
+					<mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+					<mat-cell *matCellDef="let dataItem">
+						{{dataItem.age}}
+					</mat-cell>
+				</ng-container>
+				<mat-header-row *matHeaderRowDef="['Name', 'LastName', 'Age']">
+				</mat-header-row>
+
+				<mat-row *matRowDef="let company; columns: ['Name', 'LastName', 'Age'];" (click)="onCustomer(company)">
+				</mat-row>
+			</mat-table>
+
+			<mat-toolbar *ngIf="!dataSource">No records available.</mat-toolbar>
+
+			<mat-menu #rowOptions="matMenu">
+				<ng-template matMenuContent let-dataItem="data">
+					<button (click)="onCustomer(dataItem)" mat-menu-item>
+						<mat-icon>edit</mat-icon>
+						Edit
+					</button>
+				</ng-template>
+			</mat-menu>
+		</div>
+	</div>
+</mat-card>
